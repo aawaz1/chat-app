@@ -177,7 +177,6 @@ const toggleProfileMenu = () => {
       {searchResults.map((user) => (
         <li key={user.id} className="p-4 flex justify-between items-center border-b cursor-pointer hover:bg-blue-300">
           <span>{user.firstName} {user.lastName}</span>
-          <p className="bg-blue-500">aaaa</p>
           <button onClick={() => handleFriendRequest(user.id)}>Send Request</button>
         </li>
       ))}
