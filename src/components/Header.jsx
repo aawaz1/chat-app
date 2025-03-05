@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
@@ -30,19 +30,26 @@ const Header = () => {
       setSearchResults([]);
       return;
     }
-
+  
     const fetchUsers = async () => {
       try {
         const response = await axios.get(`https://dummyjson.com/users/search?q=${searchQuery}`);
+        console.log('Fetched users:', response.data.users);
         setSearchResults(response.data.users || []);
       } catch (error) {
-        console.error("Error fetching users:", error);
+        console.error('Error fetching users:', error);
       }
     };
-
-    const debounce = setTimeout(fetchUsers, 300);
-    return () => clearTimeout(debounce);
+  
+    fetchUsers();
   }, [searchQuery]);
+  
+  
+
+  
+
+
+   
 
   const handleLogOut = () => {
     toast.success("Logged Out Successfully");
@@ -103,6 +110,8 @@ const toggleProfileMenu = () => {
           />
           {searchResults.length > 0 && (
             <ul className="absolute top-12 mt-2 left-0 w-full bg-white shadow-lg rounded-lg max-h-60 overflow-y-auto z-50">
+              {console.log('Rendering users:', searchResults)}
+
               {searchResults.map((user) => (
                 <li key={user.id} className="p-4 hover:bg-gray-200 flex justify-between items-center border-b cursor-pointer ">
                   <span>{user.firstName} {user.lastName}</span>

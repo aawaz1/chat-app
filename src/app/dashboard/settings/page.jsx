@@ -16,38 +16,44 @@ const Page = () => {
       <h1 className="text-2xl font-bold mb-4">Settings</h1>
 
       {/* Tab Navigation */}
-      <div className="flex space-x-4 border-b mb-4  md:w-[800px]">
-        <button
-          className={`py-2 flex   justify-between items-center gap-2 cursor-pointer hover:text-blue-950 hover:border-blue-950 hover:border-b-2  px-4 ${
-            activeTab === "basic"
-              ? "border-b-2 border-blue-950 text-blue-950"
-              : "text-gray-500"
-          }`}
-          onClick={() => setActiveTab("basic")}
-        >
-        <CgDetailsLess className="text-lg"/>  Basic Details
-        </button>
-        <button
-          className={`py-2 flex justify-between items-center gap-2 cursor-pointer  hover:text-blue-950 hover:border-blue-950 hover:border-b-2  px-4 ${
-            activeTab === "additional"
-              ? "border-b-2 border-blue-950 text-blue-950"
-              : "text-gray-500"
-          }`}
-          onClick={() => setActiveTab("additional")}
-        >
-         <CgDetailsMore className="text-lg"/> Additional Details
-        </button>
-        <button
-          className={`py-2 flex justify-between items-center gap-2 cursor-pointer hover:text-blue-950 hover:border-blue-950 hover:border-b-2  px-4 ${
-            activeTab === "password"
-              ? "border-b-2 border-blue-950  text-blue-950"
-              : "text-gray-500"
-          }`}
-          onClick={() => setActiveTab("password")}
-        >
-         <PiPassword className="text-lg"/> Change Password
-        </button>
-      </div>
+      <div className="flex w-full max-w-[400px] md:max-w-[800px] overflow-x-auto space-x-4 border-b mb-4 scrollbar-hide">
+  <button
+    className={`py-2 flex whitespace-nowrap items-center gap-2 cursor-pointer hover:text-blue-950 hover:border-blue-950 hover:border-b-2 px-4 ${
+      activeTab === "basic"
+        ? "border-b-2 border-blue-950 text-blue-950"
+        : "text-gray-500"
+    }`}
+    onClick={() => setActiveTab("basic")}
+  >
+    <CgDetailsLess className="text-lg flex-shrink-0" />
+    <span>Basic Details</span>
+  </button>
+  <button
+    className={`py-2 flex whitespace-nowrap items-center gap-2 cursor-pointer hover:text-blue-950 hover:border-blue-950 hover:border-b-2 px-4 ${
+      activeTab === "additional"
+        ? "border-b-2 border-blue-950 text-blue-950"
+        : "text-gray-500"
+    }`}
+    onClick={() => setActiveTab("additional")}
+  >
+    <CgDetailsMore className="text-lg flex-shrink-0" />
+    <span>Additional Details</span>
+  </button>
+  <button
+    className={`py-2 flex whitespace-nowrap items-center gap-2 cursor-pointer hover:text-blue-950 hover:border-blue-950 hover:border-b-2 px-4 ${
+      activeTab === "password"
+        ? "border-b-2 border-blue-950 text-blue-950"
+        : "text-gray-500"
+    }`}
+    onClick={() => setActiveTab("password")}
+  >
+    <PiPassword className="text-lg flex-shrink-0" />
+    <span>Change Password</span>
+  </button>
+</div>
+
+
+
 
       {/* Tab Content */}
       <div className="mt-4">

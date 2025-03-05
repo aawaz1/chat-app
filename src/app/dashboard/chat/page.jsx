@@ -4,9 +4,6 @@ import { IoIosArrowDropupCircle } from "react-icons/io";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { RiMessageLine } from "react-icons/ri";
 
-
-
-
 const Chat = () => {
   const [users, setUsers] = useState([]); // List of users
   const [selectedUser, setSelectedUser] = useState(null); // Selected user for chat
@@ -20,7 +17,6 @@ const Chat = () => {
       .then((response) => response.json())
       .then((data) => {
         setUsers(data.users);
-        // Initialize empty messages for each user
         const initialMessages = {};
         data.users.forEach((user) => {
           initialMessages[user.id] = [];
@@ -30,11 +26,8 @@ const Chat = () => {
       .catch((error) => console.error("Error fetching users:", error));
   }, []);
 
-  // Handle sending a new message
   const handleSendMessage = () => {
     if (newMessage.trim() === "") return;
-
-    // Add the new message to the selected user's chat
     const updatedMessages = {
       ...messages,
       [selectedUser.id]: [
@@ -44,17 +37,12 @@ const Chat = () => {
     };
 
     setMessages(updatedMessages);
-    setNewMessage(""); // Clear the input field
-  };
+    setNewMessage("");
+  };  
 
   return (
-    <div className="flex flex-col md:flex-row h-full bg-white p-2 rounded-md">
-      {/* Left Side: User List */}
-      <div
-        className={`w-full md:w-1/4 bg-white rounded-l-md border-r border-gray-200 ${
-          showUserList ? "block" : "hidden"
-        } md:block`}
-      >
+    <div className="flex flex-col md:flex-row h-screen bg-white p-1 rounded-md">
+      <div className={`w-full md:w-1/4 bg-white rounded-l-md border-r border-gray-200 ${showUserList ? "block" : "hidden"} md:block`}>
         <h2 className="p-2 text-xl rounded-t-md font-bold bg-blue-950 text-white">
           Users
         </h2>
@@ -62,12 +50,10 @@ const Chat = () => {
           {users.slice(0, 9).map((user) => (
             <li
               key={user.id}
-              className={`p-4 rounded-md cursor-pointer hover:bg-gray-100 ${
-                selectedUser?.id === user.id ? "bg-blue-100" : ""
-              }`}
+              className={`p-4 rounded-md cursor-pointer hover:bg-gray-100 ${selectedUser?.id === user.id ? "bg-blue-100" : ""}`}
               onClick={() => {
                 setSelectedUser(user);
-                setShowUserList(false); // Hide user list on mobile after selection
+                setShowUserList(false);
               }}
             >
               {user.firstName} {user.lastName}
@@ -76,56 +62,36 @@ const Chat = () => {
         </ul>
       </div>
 
-      {/* Right Side: Conversation */}
-      <div className="flex-1 h-[620px] overflow-hidden flex flex-col">
+      <div className="flex-1 h-full flex flex-col relative">
         {selectedUser ? (
           <>
-            {/* Chat Header */}
             <div className="p-2 rounded-t-md bg-blue-950 text-white flex items-center justify-between">
               <h2 className="text-xl font-semibold">
                 {selectedUser.firstName} {selectedUser.lastName}
               </h2>
-              {/* Toggle Button for Mobile */}
-              <button
-                className="md:hidden text-white"
-                onClick={() => setShowUserList(!showUserList)}
-              >
-                {showUserList ? <IoIosArrowDropdownCircle className="text-lg"/> : <IoIosArrowDropupCircle className="text-lg"/>}
+              <button className="md:hidden text-white" onClick={() => setShowUserList(true)}>
+                Back
               </button>
             </div>
 
-            {/* Chat Messages */}
             <div className="flex-1 p-2 overflow-y-auto">
-  {messages[selectedUser.id] && messages[selectedUser.id].length > 0 ? (
-    messages[selectedUser.id].map((message) => (
-      <div
-        key={message.id}
-        className={`mb-4  ${
-          message.sender === "You" ? "text-right" : "text-left"
-        }`}
-      >
-        <div
-          className={`inline-block p-2 rounded-lg ${
-            message.sender === "You"
-              ? "bg-blue-500 text-white"
-              : "bg-gray-200 text-gray-800"
-          }`}
-        >
-          {message.text}
-        </div>
-      </div>
-    ))
-  ) : (
-    <div className="text-center flex flex-col justify-center items-center bg-gray-200 text-gray-500 mt-4 h-[480px] ">
-      <RiMessageLine className="text-4xl"/>
-      <p>No Messages</p>
-    </div>
-  )}
-</div>
+              {messages[selectedUser.id] && messages[selectedUser.id].length > 0 ? (
+                messages[selectedUser.id].map((message) => (
+                  <div key={message.id} className={`mb-2 ${message.sender === "You" ? "text-right" : "text-left"}`}>
+                    <div className={`inline-block p-3 rounded-lg ${message.sender === "You" ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-800"}`}>
+                      {message.text}
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="text-center flex flex-col justify-center items-center bg-gray-200 text-gray-500 h-full">
+                  <RiMessageLine className="text-4xl"/>
+                  <p>No Messages</p>
+                </div>
+              )}
+            </div>
 
-
-            {/* Message Input */}
-            <div className="p-2 border-t absolute  bottom-0 w-full  md:w-[1130px] border-gray-200">
+            <div className="p-2 border-t w-full md:w-3/4 bg-white fixed bottom-0 md:left-92 left-0 right-0">
               <div className="flex">
                 <input
                   type="text"
