@@ -21,7 +21,7 @@ const Page = () => {
     className={`py-2 flex whitespace-nowrap items-center gap-2 cursor-pointer hover:text-blue-950 hover:border-blue-950 hover:border-b-2 px-4 ${
       activeTab === "basic"
         ? "border-b-2 border-blue-950 text-blue-950"
-        : "text-gray-500"
+        : "text-gray-900"
     }`}
     onClick={() => setActiveTab("basic")}
   >
@@ -32,7 +32,7 @@ const Page = () => {
     className={`py-2 flex whitespace-nowrap items-center gap-2 cursor-pointer hover:text-blue-950 hover:border-blue-950 hover:border-b-2 px-4 ${
       activeTab === "additional"
         ? "border-b-2 border-blue-950 text-blue-950"
-        : "text-gray-500"
+        : "text-gray-900"
     }`}
     onClick={() => setActiveTab("additional")}
   >
@@ -43,7 +43,7 @@ const Page = () => {
     className={`py-2 flex whitespace-nowrap items-center gap-2 cursor-pointer hover:text-blue-950 hover:border-blue-950 hover:border-b-2 px-4 ${
       activeTab === "password"
         ? "border-b-2 border-blue-950 text-blue-950"
-        : "text-gray-500"
+        : "text-gray-900"
     }`}
     onClick={() => setActiveTab("password")}
   >

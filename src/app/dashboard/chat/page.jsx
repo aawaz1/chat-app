@@ -50,7 +50,7 @@ const Chat = () => {
           {users.slice(0, 9).map((user) => (
             <li
               key={user.id}
-              className={`p-4 rounded-md cursor-pointer hover:bg-gray-100 ${selectedUser?.id === user.id ? "bg-blue-100" : ""}`}
+              className={`p-4 rounded-md text-black cursor-pointer hover:bg-gray-100 ${selectedUser?.id === user.id ? "bg-blue-100" : ""}`}
               onClick={() => {
                 setSelectedUser(user);
                 setShowUserList(false);
@@ -62,7 +62,7 @@ const Chat = () => {
         </ul>
       </div>
 
-      <div className="flex-1 h-full flex flex-col relative">
+      <div  className="flex-1 h-full flex flex-col relative">
         {selectedUser ? (
           <>
             <div className="p-2 rounded-t-md bg-blue-950 text-white flex items-center justify-between">
@@ -95,7 +95,7 @@ const Chat = () => {
               <div className="flex">
                 <input
                   type="text"
-                  className="flex-1 p-2 border border-gray-300 rounded-l-md focus:outline-none focus:border-blue-500"
+                  className="flex-1 p-2 border placeholder:text-gray-900 text-gray-900 border-gray-300 rounded-l-md focus:outline-none focus:border-blue-500"
                   placeholder="Type a message..."
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}

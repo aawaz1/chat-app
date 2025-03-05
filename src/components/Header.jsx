@@ -98,7 +98,7 @@ const toggleProfileMenu = () => {
       {/* Desktop Navbar */}
       <div className="hidden bg-blue-950 md:flex justify-between py-2">
         <div className="logo text-white text-center flex justify-center items-center px-8 text-2xl font-bold">
-          ChatVerse
+          Chat Verse
         </div>
         <div className="flex-1 max-w-md mx-8 relative">
           <input
@@ -137,12 +137,12 @@ const toggleProfileMenu = () => {
         <div className="navbar flex w-[300px] md:w-[500px] text-white text-md justify-between items-center px-12 py-2 gap-8">
           <Link className="text-xl flex justify-between gap-2 items-center" href="/dashboard"><FaHome/> Home</Link>
           <Link className="text-xl flex justify-between gap-2 items-center" href="/dashboard/chat"><HiAnnotation/> Chat</Link>
-          <div className="relative group">
+          <div style={{zIndex : 9999}} className="relative group">
             <button className="text-xl cursor-pointer flex justify-between gap-2 items-center focus:outline-none">
               <ImProfile /> Profile
             </button>
             {/* Dropdown Menu */}
-            <div className="absolute right-0 mt-5 w-30 bg-blue-950 text-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+            <div style={{zIndex : 2500}} className="absolute right-0 mt-5  w-30 bg-blue-950 text-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
               <ul className="py-2 px-1 rounded-xl">
                 {/* <li>
                   <Link href="/profile" className="block px-4 py-2 hover:bg-gray-100">
@@ -150,12 +150,12 @@ const toggleProfileMenu = () => {
                   </Link>
                 </li> */}
                 <li>
-                  <Link href="/dashboard/settings" className=" flex items-center justify-between px-4 rounded-md py-2 hover:bg-blue-300">
+                  <Link href="/dashboard/settings" className=" flex items-center justify-between px-4 rounded-md py-2 hover:bg-blue-700">
                    <IoMdSettings/> Settings
                   </Link>
                 </li>
                 
-                  <li onClick={handleLogOut} className="flex cursor-pointer justify-between items-center px-4 py-2 rounded-md hover:bg-blue-300">
+                  <li onClick={handleLogOut} className="flex cursor-pointer justify-between items-center px-4 py-2 rounded-md hover:bg-blue-700">
                   <RiLogoutCircleFill className="text-lg"/>
                     Logout
                   </li>
@@ -163,15 +163,11 @@ const toggleProfileMenu = () => {
               </ul>
             </div>
           </div>
-        
-      
-        
-       
         </div>
       </div>
 
       {/* Mobile Navbar */}
-      <div className="md:hidden bg-blue-950 text-white flex justify-between w-full py-2 px-2">
+      <div className="md:hidden bg-blue-950 text-white items-center flex justify-between w-full py-2 px-2">
         <div className="logo text-white text-md">Chat Verse</div>
         <div className="relative w-2/3">
   <input
