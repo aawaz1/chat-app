@@ -16,7 +16,7 @@ const LandingPage = () => {
       }
     }, [router]);
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-gradient-to-r from-blue-600 to-blue-950 text-white">
+    <div className="min-h-screen flex flex-col justify-between bg-blue-600 to-blue-950 text-white">
     
     
 
@@ -34,7 +34,7 @@ const LandingPage = () => {
           ChatVerse is your go-to app for seamless messaging, real-time collaboration, and staying connected with your friends and team.
         </p>
         <div className="flex gap-4">
-          <Link href="/signup" className="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-300">Get Started</Link>
+          <Link href="/register" className="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-300">Get Started</Link>
           <Link href="/login" className="border bg-blue-950 border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-600">Login</Link>
         </div>
       </section>

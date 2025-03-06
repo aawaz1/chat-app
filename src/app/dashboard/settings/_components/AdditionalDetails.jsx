@@ -4,7 +4,7 @@ import Basic from '../../../../../public/tree.png'
 
 const BasicDetails = () => {
   return (
-    <div className='bg-white border-blue-950 border rounded-md'>
+    <div className='bg-white border-blue-950 border rounded-2xl'>
      {/* <h1>Basic Details</h1> */}
      <div className='grid space-x-2 grid-cols-1 md:grid-cols-2'>
      <div className="space-y-4">
@@ -56,7 +56,8 @@ const BasicDetails = () => {
           </form>
         </div>
 
-        <div className='flex justify-center items-center bg-gray-400 rounded-l-2xl'>
+        <div className='flex justify-center items-center bg-gray-400 rounded-bl-2xl rounded-br-2xl  
+  md:rounded-tr-2xl md:rounded-br-2xl md:rounded-bl-none'>
             <Image alt='basic' src={Basic} width={300} height={300}/>
         </div>
      </div>
