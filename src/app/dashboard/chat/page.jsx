@@ -41,7 +41,7 @@ const Chat = () => {
   };  
 
   return (
-    <div className="flex flex-col md:flex-row h-screen bg-white p-1 rounded-md">
+    <div className="flex flex-col md:flex-row h-[calc(100vh-4rem)] bg-white p-1 rounded-md">
       <div className={`w-full md:w-1/4 bg-white rounded-l-md border-r border-gray-200 ${showUserList ? "block" : "hidden"} md:block`}>
         <h2 className="p-2 text-xl rounded-t-md font-bold bg-blue-950 text-white">
           Users
@@ -74,7 +74,7 @@ const Chat = () => {
               </button>
             </div>
 
-            <div className="flex-1 p-2 overflow-y-auto">
+            <div className="flex-1 p-2 mb-10 overflow-y-auto">
               {messages[selectedUser.id] && messages[selectedUser.id].length > 0 ? (
                 messages[selectedUser.id].map((message) => (
                   <div key={message.id} className={`mb-2 ${message.sender === "You" ? "text-right" : "text-left"}`}>
